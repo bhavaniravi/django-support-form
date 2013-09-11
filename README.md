@@ -1,5 +1,8 @@
 # django-support-form
 
+[![Build Status](https://travis-ci.org/cbmi/django-support-form.png?branch=master)](https://travis-ci.org/cbmi/django-support-form)
+[![Coverage Status](https://coveralls.io/repos/cbmi/django-support-form/badge.png?branch=master)](https://coveralls.io/r/cbmi/django-support-form?branch=master)
+
 Simple contact/support form for Django apps.
 
 ## Install
