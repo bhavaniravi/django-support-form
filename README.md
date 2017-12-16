@@ -1,15 +1,12 @@
 # django-support-form
 
-[![Build Status](https://travis-ci.org/cbmi/django-support-form.png?branch=master)](https://travis-ci.org/cbmi/django-support-form)
-[![Coverage Status](https://coveralls.io/repos/cbmi/django-support-form/badge.png?branch=master)](https://coveralls.io/r/cbmi/django-support-form?branch=master)
+[Forked from PyPi package django-support-form](https://github.com/chop-dbhi/django-support-form)
 
 Simple contact/support form for Django apps.
 
-## Install
-
-```bash
-pip install django-support-form
-```
+## What's new
+1. Django 1.11 support
+2. Model support to save support details
 
 ## Setup
 
@@ -25,12 +22,13 @@ INSTALLED_APPS = (
 Include the `supportform.urls` in the the `ROOT_URLCONF`:
 
 ```python
-from django.conf.urls import url, patterns, include
+from django.conf.urls import url, include
 
-urlpatterns = patterns('',
+urlpatterns =
+[    
     url(r'^support/', include('supportform.urls')),
     ...
-)
+]
 ```
 
 ## Settings
