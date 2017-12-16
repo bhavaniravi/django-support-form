@@ -13,9 +13,8 @@ def send_support_mail(form, **kwargs):
         form.cleaned_data['subject'])
     t = get_template('supportform/email_body.txt')
     kwargs['message'] = form.cleaned_data['message']
-    c = Context(kwargs)
     try:
-        send_mail(subject, t.render(c), from_email, [SUPPORT_EMAIL])
+        send_mail(subject, t.render(kwargs), from_email, [SUPPORT_EMAIL])
         form.sent += 1
     except smtplib.SMTPException:
         form.send_error = True
