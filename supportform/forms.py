@@ -6,8 +6,7 @@ from django.core.mail import send_mail
 from django.template import Context
 from django.template.loader import get_template
 from .settings import SUPPORT_EMAIL, SUPPORT_EMAIL_SUBJECT, SUPPORT_WAIT_SEND, SAVE_SUPPORT_QUERY
-if SAVE_SUPPORT_QUERY:
-    from supportform.models import Support
+from supportform.models import Support
 
 def send_support_mail(form, **kwargs):
     from_email = form.cleaned_data['email']
@@ -19,12 +18,13 @@ def send_support_mail(form, **kwargs):
         send_mail(subject, t.render(kwargs), from_email, [SUPPORT_EMAIL])
         if SAVE_SUPPORT_QUERY:
             # Saves the query if the setting is true
-            Support.objects.create(email=from_email,**kwargs)
+            Support.objects.create(email=from_email,subject=subject,description=kwargs["message"])
         form.sent += 1
-    except smtplib.SMTPException:
+    except (smtplib.SMTPException, ConnectionRefusedError):
         form.send_error = True
         ## Always save in case of error
-        Support.objects.create(email=from_email,**kwargs)
+        Support.objects.create(email=from_email,subject=subject,description=kwargs["message"])
+
     form._send_thread = None
 
 
