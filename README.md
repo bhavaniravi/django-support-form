@@ -10,6 +10,8 @@ Simple contact/support form for Django apps.
 
 ## Setup
 
+Run `python setup.py install` to install the django package
+
 Add `supportform` to `INSTALLED_APPS` along with the following Django contrib apps:
 
 ```python
@@ -34,8 +36,12 @@ urlpatterns =
 ## Settings
 
 - `SUPPORT_EMAIL` - The recipient email address the support email will be sent to, e.g. 'support@example.com'. Default is `DEFAULT_FROM_EMAIL` Django setting.
+
 - `SUPPORT_EMAIL_SUBJECT` - Default email subject prepopulated in the support form. Default is 'Support Message'.
+
 - `SUPPORT_WAIT_SEND` - Wait until the email successfully sends. If set to false, the email will be sent in the background (via a thread). Default `True`
+
+- `SAVE_SUPPORT_QUERY` - Saves support message to DB. Default `False`
 
 ## Templates
 
